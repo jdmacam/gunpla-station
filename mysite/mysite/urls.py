@@ -19,5 +19,5 @@ import gunsta
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('gunsta.urls'))
+    path('',include('gunsta.urls')),
 ]

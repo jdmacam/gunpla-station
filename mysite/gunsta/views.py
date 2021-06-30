@@ -6,5 +6,4 @@ def index(request):
     context = {
         "title": "Gunpla Station"
     }
-
     return render(request, "index.html", context=context)
