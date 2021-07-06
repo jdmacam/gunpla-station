@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/foundation.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/topbar.css' %}" />
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+    <!-- Top nav bar -->
+    <nav class="top-bar topbar-responsive">
+        <div class="top-bar-title">
+            <a class="topbar-responsive-logo" href="">
+                <strong>{{ title }}</strong>
+                <img src="{% static 'images/logo.png' %}" width=100>
+            </a>
+        </div>
+        <div style="margin:0 auto;"> 
+            <ul class="menu simple vertical medium-horizontal">
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Social</a></li>
+                <li><a href="#">Resources</a></li>
+            </ul>
+        </div>
+
+        <div class="logout-button"> 
+            <ul class="menu logout-button">
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!----->
+    {% block content %}{% endblock %}
+    <script src="{% static 'js/vendor.js' %}"></script>
+    <script src="{% static 'js/foundation.js' %}"></script>
+    <script src="https://unpkg.com/vue@next"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>

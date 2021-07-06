@@ -1,0 +1,49 @@
+@font-face {
+  font-family: plavsky;
+  src: url(../fonts/plavsky.otf);
+}
+
+@font-face {
+  font-family: plavskybold;
+  src: url(../fonts/plavskybold.otf);
+  font-weight: bold;
+}
+.logoutbutton {border-style: solid;}
+
+.topbar-responsive {
+  background-image: url(../images/logo.png);
+  background: #1839cf;
+}
+
+.topbar-responsive .topbar-responsive-logo {
+  color: #fefefe;
+  vertical-align: middle;
+  font-family: plavskybold;
+  font-size: x-large;
+}
+
+.topbar-responsive .menu {
+  background: #1839cf;
+}
+
+.topbar-responsive .logout-button{
+  background: #303030;
+}
+
+.topbar-responsive .menu a {
+  color: #fefefe;
+  font-family: plavsky;
+  font-size: medium;
+  transition: color 0.15s ease-in;
+}
+
+.topbar-responsive .menu a:hover {
+  color: #c72d06;
+}
+
+.topbar-responsive .menu .topbar-responsive-button {
+  color: #fefefe;
+  border-color: #fefefe;
+  transition: color 0.15s ease-in, border-color 0.15s ease-in;
+}
+
