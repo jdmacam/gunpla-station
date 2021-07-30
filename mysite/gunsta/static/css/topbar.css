@@ -8,7 +8,12 @@
   src: url(../fonts/plavskybold.otf);
   font-weight: bold;
 }
-.logoutbutton {border-style: solid;}
+
+.top-bar-right { 
+  font-family: plavsky;
+  padding-right: 25px;
+  font-size: large
+}
 
 .topbar-responsive {
   background-image: url(../images/logo.png);
@@ -28,6 +33,13 @@
 
 .topbar-responsive .logout-button{
   background: #303030;
+}
+
+.topbar-responsive .user-card{
+  background: rgb(13, 146, 163);
+  color: #fefefe;
+  font-family: plavsky;
+  font-size: medium;
 }
 
 .topbar-responsive .menu a {

@@ -3,19 +3,29 @@ version: '3'
 
 services:
    web:
-     build: .
-     volumes:
-        - .:/code
-     expose:
-       - 8000
-     user: "1002:1003" #system dependent
-     command: python /code/mysite/manage.py runserver 0.0.0.0:8000
- 
+      restart: always
+      build: .
+      volumes:
+         - .:/code
+      depends_on:
+         - redis
+      links:
+         - redis:redis
+      expose:
+         - 8000
+      user: "1002:1003" #system dependent
+      command: python /code/mysite/manage.py runserver 0.0.0.0:8000
+
+   redis:
+      image: redis:latest
+      expose:
+         - 6379
+
    nginx:
     restart: always
     build: ./nginx/
     volumes:
-       - ./mysite/myapp/static:/static/
+       - ./mysite/gunsta/static:/static/
     depends_on: 
        - web
     ports:

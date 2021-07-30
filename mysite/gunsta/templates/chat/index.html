@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block navmenu %}
+<div style="margin:0 auto;">
+    <ul class="menu simple vertical medium-horizontal">
+        <li><a href="/projects">Projects</a></li>
+        <li class="is-active"><a href="/chat">Chat</a></li>
+        <li><a href="/resources">Resources</a></li>
+    </ul>
+</div>
+{% endblock %}
+{% block content %}
+    <center><h3>Choose a chatroom to join</h1><br></center>
+    <a href="chat/Building" class="button large expanded">🧰 Building Questions 🧰</a><br>
+    <a href="chat/Anime-Manga-Tv" class="button large expanded">📺📚 Anime/Manga/TV 📺📚</a><br>
+    <a href="chat/Gaming" class="button large expanded">🎮🎲 Gaming 🎮🎲</a><br>
+    <a href="chat/Auction-House" class="button large expanded">💰 Buying/Selling 💰</a><br>
+    <!-- <input id="room-name-input" type="text" size="100"><br>
+    <input id="room-name-submit" type="button" value="Enter"> -->
+
+    <script>
+        document.querySelector('#room-name-input').focus();
+        document.querySelector('#room-name-input').onkeyup = function(e) {
+            if (e.keyCode === 13) {  // enter, return
+                document.querySelector('#room-name-submit').click();
+            }
+        };
+
+        document.querySelector('#room-name-submit').onclick = function(e) {
+            var roomName = document.querySelector('#room-name-input').value;
+            window.location.pathname = '/chat/' + roomName + '/';
+        };
+    </script>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/resources.css' %}" />
+{% endblock %}
+
+{% block navmenu %}
+<div style="margin:0 auto;">
+    <ul class="menu simple vertical medium-horizontal">
+        <li><a href="/projects">Projects</a></li>
+        <li><a href="/chat">Chat</a></li>
+        <li class="is-active"><a href="/resources">Resources</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<section class="block-list">
+    <header>Gunpla Stores</header>
+    <ul>
+        <li>
+            <div>
+                <p class="list-header"><a href="https://www.amazon.com/">Amazon</a></p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p class="list-header"><a href="https://www.hlj.com/">HobbyLink Japan</a></p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p class="list-header"><a href="https://www.usagundamstore.com/">USA Gundam Store (USAGS)</a></p>
+            </div>
+        </li>
+    </ul>
+</section>
+
+<section class="block-list">
+    <header>Gunpla Youtube Channels</header>
+    <ul>
+        <li>
+            <div>
+                <p class="list-header"><a href="https://www.youtube.com/user/MechaGaikotsu">Mecha Gaikotsu</a></p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p class="list-header"><a href="https://www.youtube.com/c/EAGunpla">EA Gunpla</a></p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p class="list-header"><a href="https://www.youtube.com/channel/UCmTirt4GHaPXVBDOYfW3nDg">Studio G</a></p>
+            </div>
+        </li>
+        <li>
+            <div>
+                <p class="list-header"><a href="https://www.youtube.com/c/YouSeeGundam">YouSeeGundam</a></p>
+            </div>
+        </li>
+    </ul>
+</section>
+{% endblock %}

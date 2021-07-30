@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block navmenu %}
+<div style="margin:0 auto;"> 
+    <ul class="menu simple vertical medium-horizontal">
+        <li class="is-active"><a href="/projects">Projects</a></li>
+        <li><a href="/chat">Chat</a></li>
+        <li><a href="/resources">Resources</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<center><h1> {{ user.username }}'s Projects </h1></center>
+{% for project in project_objects%}
+project: {{ project }}<br>
+{% endfor %}
+
+{% endblock %}

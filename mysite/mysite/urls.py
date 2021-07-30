@@ -20,4 +20,7 @@ import gunsta
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('gunsta.urls')),
+    path('projects',include('gunsta.urls')),
+    path('chat',include('gunsta.urls')),
+    path('resources',include('gunsta.urls')),
 ]
