@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}" />
+{% endblock %}
+
+{% block navmenu %}
+<div style="margin:0 auto;"> 
+    <ul class="menu simple vertical medium-horizontal">
+        <li class="is-active"><a href="/projects">Projects</a></li>
+        <li><a href="/chat">Chat</a></li>
+        <li><a href="/resources">Resources</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block content %}
+<center><h1> Add Project </h1></center>
+<!-- Add Project form -->
+<form action="/projects/new_project" method="post">
+    {% csrf_token %}
+
+    {{ form }}
+    <input type="submit" class="button large" value="Add Project" />
+</form>
+<!--  -->
+
+{% endblock %}

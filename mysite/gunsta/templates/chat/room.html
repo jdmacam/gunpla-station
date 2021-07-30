@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/chat.css' %}" />
+{% endblock %}
+
 {% block navmenu %}
 <div style="margin:0 auto;">
     <ul class="menu simple vertical medium-horizontal">
@@ -11,10 +15,10 @@
 </div>
 {% endblock %}
 {% block content %}
-<h3>Chatroom: {{ room_name }}</h3>
+<br><h3>Chatroom: {{ header }}</h3>
 <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-<input id="chat-message-input" type="text" size="100"><br>
-<input id="chat-message-submit" type="button" value="Send">
+<input id="chat-message-input" type="text" size="100">
+<input id="chat-message-submit" type="button" style="width: 150px;" value="Send">
 {{ room_name|json_script:"room-name" }}
 <script>
     const roomName = JSON.parse(document.getElementById('room-name').textContent);

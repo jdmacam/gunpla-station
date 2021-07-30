@@ -1,0 +1,8 @@
+@font-face {
+    font-family: plavsky;
+    src: url(../fonts/plavsky.otf);
+}
+
+h3{
+    font-family: plavsky;
+}

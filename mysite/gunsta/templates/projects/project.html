@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/projects.css' %}" />
+{% endblock %}
+
 {% block navmenu %}
 <div style="margin:0 auto;"> 
     <ul class="menu simple vertical medium-horizontal">
@@ -12,9 +16,13 @@
 {% endblock %}
 
 {% block content %}
-<center><h1> {{ user.username }}'s Projects </h1></center>
-{% for project in project_objects%}
-project: {{ project }}<br>
+{% for project in project_object %}
+<div style="text-align:center;"><h1> {{ project.project_title }} </h1></div>
+<div style="text-align:center;"><p> {{ project.project_description }} </p></div>
 {% endfor %}
+
+<a href="projects/new_step" class="button large">Add New Step</a>
+
+
 
 {% endblock %}
