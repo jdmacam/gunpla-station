@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block navmenu %}
-<div style="margin:0 auto;"> 
+<div style="margin:0 auto;">
     <ul class="menu simple vertical medium-horizontal">
         <li class="is-active"><a href="/projects">Projects</a></li>
         <li><a href="/chat">Chat</a></li>
@@ -16,7 +16,9 @@
 {% endblock %}
 
 {% block content %}
-<div style="text-align:center;"><h1> NEW STEP </h1></div>
+<div style="text-align:center;">
+    <h1> Create New Step </h1>
+</div>
 
 <!-- Add Step form -->
 <form action="/projects/{{ project_name }}/new_step" method="post">

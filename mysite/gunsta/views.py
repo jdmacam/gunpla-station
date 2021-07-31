@@ -42,15 +42,13 @@ def projects(request):
     }
     return render(request, "projects/projects.html", context=context)
 
-
-
 # individual project view
 def project_view(request, project_name):
     if not request.user.is_authenticated:
         return redirect('/login/')
 
-    project_object = models.ProjectModel.objects.filter(author=request.user, project_title=project_name)
-    step_objects = models.StepModel.objects.filter(author=request.user, project=project_object.first())
+    project_object = models.ProjectModel.objects.filter(author=request.user, project_title=project_name).first()
+    step_objects = models.StepModel.objects.filter(author=request.user, project=project_object)
     
     context = {
         "title": "Gunpla Station",
@@ -60,6 +58,7 @@ def project_view(request, project_name):
     }
     return render(request, "projects/project.html", context=context)
 
+# new project
 def new_project(request):
     if not request.user.is_authenticated:
         return redirect('/login/')
@@ -75,6 +74,17 @@ def new_project(request):
         "form":form_instance,
     }
     return render(request, "projects/new_project.html", context=context)
+
+# delete project
+def delete_project(request, project_name):
+    if not request.user.is_authenticated:
+        return redirect('/login/')
+
+    project_object = models.ProjectModel.objects.filter(author=request.user, project_title=project_name).first()
+    print("*** Deleting ***" + str(project_object) + "\n\n")
+    project_object.delete()
+
+    return redirect("/projects")
 
 # new step
 def new_step(request, project_name):
@@ -95,6 +105,36 @@ def new_step(request, project_name):
         "form": form_instance
     }
     return render(request, "projects/new_step.html", context=context)
+
+# update step
+def update_step(request, project_name, step_name):
+    if not request.user.is_authenticated:
+        return redirect('/login/')
+    
+    project_object = models.ProjectModel.objects.filter(author=request.user, project_title=project_name).first()
+    step_object = models.StepModel.objects.get(author=request.user, project=project_object, step_name=step_name)
+    if step_object.status == "finished":
+        step_object.status = "in-progress"
+    elif step_object.status == "in-progress":
+        step_object.status = "finished"
+    step_object.save()
+    #print("*** step_object ***" + str(step_object) + "\n\n")
+    reurl = "/projects/" + project_name + "/"
+    #print("*** URL REDIRECT ***" + str(reurl) + "\n\n")
+    return redirect(reurl)
+
+# delete step
+def delete_step(request, project_name, step_name):
+    if not request.user.is_authenticated:
+        return redirect('/login/')
+    
+    project_object = models.ProjectModel.objects.filter(author=request.user, project_title=project_name).first()
+    step_object = models.StepModel.objects.get(author=request.user, project=project_object, step_name=step_name)
+    print("*** Deleting ***" + str(step_object) + "\n\n")
+    step_object.delete()
+
+    reurl = "/projects/" + project_name + "/"
+    return redirect(reurl)
 
 def chat(request):
     if not request.user.is_authenticated:

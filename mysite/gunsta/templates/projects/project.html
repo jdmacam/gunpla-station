@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block navmenu %}
-<div style="margin:0 auto;"> 
+<div style="margin:0 auto;">
     <ul class="menu simple vertical medium-horizontal">
         <li class="is-active"><a href="/projects">Projects</a></li>
         <li><a href="/chat">Chat</a></li>
@@ -16,17 +16,41 @@
 {% endblock %}
 
 {% block content %}
-{% for project in project_object %}
-<div style="text-align:center;"><h1> {{ project.project_title }} </h1></div>
-<div style="text-align:center;"><p> {{ project.project_description }} </p></div>
-{% endfor %}
+
+<div style="text-align:center;">
+    <h1> {{ project_object.project_title }} </h1>
+</div>
+<div style="text-align:center;">
+    <p> {{ project_object.project_description }} </p>
+</div>
 
 {% for step in step_objects %}
-<p> {{ step.step_name }}</p>
+
+<!-- Steps list -->
+<div class="columns small-6 small-centered">
+    <div class="card-info secondary">
+        <div class="card-info-content">
+            <h3 class="lead">
+                <p> {{ step.step_name }}</p>
+            </h3>
+            <div class="card-info primary">
+                <div class="card-info-content">
+                    <h3 class="lead">
+                        <p> Status: {{ step.status }}</p>
+                        <a class="success button" href="update/{{ step.step_name }}/"> Toggle Status</a>
+                        <a class="alert button" href="delete/{{ step.step_name }}/"> Delete Step</a>
+                    </h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endfor %}
 
-<a href="new_step" class="button large">Add New Step</a>
-
+<div class=large button-group>
+    <a href="new_step" class="button large">Add New Step</a>
+    <a href="delete-project/" class="alert button large">Delete Project</a>
+</div>
 
 
 {% endblock %}

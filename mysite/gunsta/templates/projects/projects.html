@@ -6,21 +6,23 @@
 {% endblock %}
 
 {% block navmenu %}
-<div style="margin:0 auto;"> 
-    <ul class="menu simple vertical medium-horizontal">
-        <li class="is-active"><a href="/projects">Projects</a></li>
-        <li><a href="/chat">Chat</a></li>
-        <li><a href="/resources">Resources</a></li>
-    </ul>
+<div style="margin:0 auto;">
+  <ul class="menu simple vertical medium-horizontal">
+    <li class="is-active"><a href="/projects">Projects</a></li>
+    <li><a href="/chat">Chat</a></li>
+    <li><a href="/resources">Resources</a></li>
+  </ul>
 </div>
 {% endblock %}
 
 {% block content %}
-<center><h1> {{ user.username }}'s Projects </h1></center>
+<center>
+  <h1> {{ user.username }}'s Projects </h1>
+</center>
 <!-- Projects List -->
 {% for project in project_objects%}
 <a href="projects/{{ project.project_title }}/">
-<div class="card-info secondary">
+  <div class="card-info secondary">
     <div class="card-info-content">
       <h3 class="lead">{{ project.project_title }}<br></h3>
       <p>{{ project.project_description }}</p>
@@ -31,5 +33,4 @@
 <!--  -->
 
 <a href="projects/new_project" class="button large">Add New Project</a>
-
 {% endblock %}

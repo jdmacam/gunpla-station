@@ -33,4 +33,4 @@ class StepModel(models.Model):
         max_length=240
     )
     def __str__(self):
-        return "(" + str(self.author.username) + ") [" + str(self.project.project_title) + "] " + self.step_name
+        return "(" + str(self.author.username) + ") [" + str(self.project.project_title) + "] " + self.step_name + " (" + self.status + ")"
