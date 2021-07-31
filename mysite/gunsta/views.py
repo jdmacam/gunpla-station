@@ -42,6 +42,24 @@ def projects(request):
     }
     return render(request, "projects/projects.html", context=context)
 
+
+
+# individual project view
+def project_view(request, project_name):
+    if not request.user.is_authenticated:
+        return redirect('/login/')
+
+    project_object = models.ProjectModel.objects.filter(author=request.user, project_title=project_name)
+    step_objects = models.StepModel.objects.filter(author=request.user, project=project_object.first())
+    
+    context = {
+        "title": "Gunpla Station",
+        "project_name": project_name,
+        "project_object": project_object,
+        "step_objects": step_objects
+    }
+    return render(request, "projects/project.html", context=context)
+
 def new_project(request):
     if not request.user.is_authenticated:
         return redirect('/login/')
@@ -58,20 +76,25 @@ def new_project(request):
     }
     return render(request, "projects/new_project.html", context=context)
 
-# individual project view
-def project_view(request, project_name):
+# new step
+def new_step(request, project_name):
     if not request.user.is_authenticated:
         return redirect('/login/')
 
-    project_object = models.ProjectModel.objects.filter(author=request.user, project_title=project_name)
-    print(str(project_object) + '\n\n\n')
+    if request.method == "POST":
+        form_instance = forms.StepForm(request.POST)
+        if form_instance.is_valid():
+            form_instance.save(request, project_name)
+            reurl = "/projects/" + project_name + "/"
+            return redirect(reurl)
+    else:
+        form_instance = forms.StepForm()
     context = {
         "title": "Gunpla Station",
         "project_name": project_name,
-        "project_object": project_object,
+        "form": form_instance
     }
-    return render(request, "projects/project.html", context=context)
-
+    return render(request, "projects/new_step.html", context=context)
 
 def chat(request):
     if not request.user.is_authenticated:

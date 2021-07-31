@@ -16,17 +16,16 @@
 {% endblock %}
 
 {% block content %}
-{% for project in project_object %}
-<div style="text-align:center;"><h1> {{ project.project_title }} </h1></div>
-<div style="text-align:center;"><p> {{ project.project_description }} </p></div>
-{% endfor %}
+<div style="text-align:center;"><h1> NEW STEP </h1></div>
 
-{% for step in step_objects %}
-<p> {{ step.step_name }}</p>
-{% endfor %}
+<!-- Add Step form -->
+<form action="/projects/{{ project_name }}/new_step" method="post">
+    {% csrf_token %}
 
-<a href="new_step" class="button large">Add New Step</a>
-
+    {{ form }}
+    <input type="submit" class="button large" value="Add Step" />
+</form>
+<!--  -->
 
 
 {% endblock %}

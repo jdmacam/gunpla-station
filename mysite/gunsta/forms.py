@@ -60,10 +60,11 @@ class StepForm(forms.Form):
         max_length=240,
     )
     def save(self, request, project_title):
-        project_instance = models.ProjectModel.object.get(author=request.user, project_title=project_title)
+        project_instance = models.ProjectModel.objects.filter(author=request.user, project_title=project_title).first()
         step_instance = models.StepModel()
         step_instance.step_name = self.cleaned_data["step_name"]
         step_instance.author = request.user
         step_instance.project = project_instance
-        step_instance.project = "in-progress"
+        step_instance.status = "in-progress"
+        step_instance.save()
         return step_instance
