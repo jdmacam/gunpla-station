@@ -13,6 +13,7 @@ def landing(request):
 
 def logout_view(request):
     logout(request)
+    print('Logging out...')
     return redirect('/login/')
 
 def register_view(request):
